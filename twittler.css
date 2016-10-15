@@ -1,0 +1,89 @@
+/** LAYOUT **/
+
+body {
+  background: #0084b4; /*Twitter Color*/
+}
+
+/** Twittler Logo **/
+
+.menu {
+  cursor: pointer;
+}
+.logo {
+  font-size: 64px;
+  text-align: center;
+  margin-top: 25px;
+  color: white;
+}
+
+/** ALL TWITTS **/
+
+.all-twitts-container {
+  background: #FFF;
+  color: #263248;
+  padding: 10px 20px 20px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+/** Different Color Text For Each DEFAULT USER **/
+
+.shawndrost{
+  color: #FF9800; /*orange*/
+}
+
+.sharksforcheap{
+  color: #6cc7c6; /*greenish*/
+}
+
+.mracus{
+  color: #46427d; /*Royal Purple*/
+}
+
+.douglascalhoun{
+  color: #A81A28; /*Bright Maroon*/
+}
+
+/** EACH TWITT ROW - user, messsage, date **/
+
+.user {
+  font-family: Verdana;
+  font-size: 20px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+.message {
+  font-family: 'Droid Sans', Calibri;
+  font-size: 35px;
+  line-height: 40px;
+  margin-left: 10px;
+}
+.date {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #B2B2B2;
+}
+
+/** SPECIFIC USER TWITTS SECTION **/
+
+.user-twitts-container {
+  background: #FFF;
+  color: #263248;
+  padding: 10px 20px 20px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+.user-twitts-heading {
+  text-align: center;
+  color: #FF9800;
+}
+
+.back-to-all {
+  text-align: center;
+  background: #FFF;
+  color: #263248;
+}
+
+.user-twitts-container .message {
+  margin-top: 30px;
+}

@@ -3,10 +3,21 @@
  * You can safely leave this file untouched, and confine your changes to index.html.
  */
 
+//users = {
+ //{tweet} - user, message, date-time
+ // shawndrost: [{tweet}]
+ // sharksforcheap: [{tweet}]
+ // mracus: [{tweet}]
+ // douglascalhoun: [{tweet}]
+//};
+
 // set up data structures
 window.streams = {};
-streams.home = [];
-streams.users = {};
+//DISPLAY ALL THE TWEETS
+streams.home = [];  //[{tweet - user, message, date-time}] - Stores array of {tweets}
+streams.users = {}; //Keys are: shawndrost, sharksforcheap, mracus, douglascalhoun
+
+/** DISPLAY SPECIFIC USER-TWEETS **/
 streams.users.shawndrost = [];
 streams.users.sharksforcheap = [];
 streams.users.mracus = [];
@@ -16,7 +27,7 @@ window.users = Object.keys(streams.users);
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
   var username = newTweet.user;
-  streams.users[username].push(newTweet);
+  streams.users[username].push(newTweet); //from generateRandomTweet - {tweet.user}
   streams.home.push(newTweet);
 };
 
@@ -46,15 +57,16 @@ var generateRandomTweet = function(){
   addTweet(tweet);
 };
 
-for(var i = 0; i < 10; i++){
+/** Generates 10 Random Tweets Upon Loading Home Page **/
+for(var i = 0; i < 4; i++){
   generateRandomTweet();
 }
 
 var scheduleNextTweet = function(){
   generateRandomTweet();
-  setTimeout(scheduleNextTweet, Math.random() * 1500);
+  setTimeout(scheduleNextTweet, /*Math.random() * */ 2000);
 };
-scheduleNextTweet();
+scheduleNextTweet(); //schedules Tweets
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)
