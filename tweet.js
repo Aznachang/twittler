@@ -4,8 +4,6 @@ $(document).ready(function(){
 
   var autoDisplay = function(userName){
 
-    //displayTweets(userName);
-    //  setTimeout(autoDisplay, 3000);
     displayTweets(userName);
       setTimeout(function(){
         autoDisplay(userName);
@@ -95,8 +93,7 @@ $(document).ready(function(){
     })
   });
 
-  //At First Display ALL TWEETS on HOME PAGE
-  //displayTweets('');
+  //'Display and Refresh' ALL TWEETS on HOME PAGE
   autoDisplay('');
 
 }); //end of file
