@@ -1,6 +1,8 @@
 $(document).ready(function(){
   //initially there is no specific Twittler Handle passed
   var tweetHandle = '';
+  var users = Object.keys(streams.users);
+
   var displayTweets = function(tweetHandle) {
     //Check or Parse for New Tweets every 0.5 seconds
     setTimeout(function(){
@@ -11,7 +13,8 @@ $(document).ready(function(){
     if(tweetHandle === '') {
       $('.user-twitts-container').hide();
       $('.all-twitts').html('');
-      console.log("Parsing for NEW ALL Tweets");
+      //console.log("Parsing for NEW ALL Tweets");
+
     /********* Display ALL Tweets *********/
 
     //<div class = "all-twitts">
@@ -27,27 +30,15 @@ $(document).ready(function(){
           '<div class="message">' + tweet.message +
           '</div><div class="date">' + moment(tweet.created_at).fromNow() +
            "</div></div><hr>");
+      });
+
+      //Display tweets by clicking on Specific-UserName
+      users.forEach(function(user){
+        var userClass = '.' + user;
+
+        $(userClass).on('click', function() {
+          tweetHandle = user;
         });
-
-          //Display tweets by clicking on specific-username
-      $('.shawndrost').on('click', function() {
-          tweetHandle = 'shawndrost';
-         // displayTweets('shawndrost');
-      });
-
-      $('.sharksforcheap').on('click', function() {
-         tweetHandle = 'sharksforcheap';
-        // displayTweets('sharksforcheap');
-      });
-
-      $('.mracus').on('click', function() {
-        tweetHandle = 'mracus';
-       // displayTweets('mracus');
-      });
-
-      $('.douglascalhoun').on('click', function() {
-        tweetHandle = 'douglascalhoun';
-        //displayTweets('douglascalhoun');
       });
 
     } //end of if

@@ -64,7 +64,7 @@ for(var i = 0; i < 6; i++){
 
 var scheduleNextTweet = function(){
   generateRandomTweet();
-  setTimeout(scheduleNextTweet, /*Math.random() * */ 4000);
+  setTimeout(scheduleNextTweet, Math.random() *  2000);
 };
 scheduleNextTweet(); //schedules Tweets
 
