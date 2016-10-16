@@ -1,16 +1,17 @@
 $(document).ready(function(){
+  //initially there is no specific Twittler Handle passed
   var tweetHandle = '';
   var displayTweets = function(tweetHandle) {
-    //Check for New Tweets every 2 seconds
+    //Check or Parse for New Tweets every 0.5 seconds
     setTimeout(function(){
       displayTweets(tweetHandle);
     }, 500);
 
     // Displays all tweets - checks to see if it is a valid username handle
     if(tweetHandle === '') {
-      //$('.user-twitts-container').hide();
+      $('.user-twitts-container').hide();
       $('.all-twitts').html('');
-      console.log("Display All Tweets");
+      console.log("Parsing for NEW ALL Tweets");
     /********* Display ALL Tweets *********/
 
     //<div class = "all-twitts">
@@ -20,9 +21,10 @@ $(document).ready(function(){
       // </div><hr>
 
       streams.home.forEach(function(tweet) {
+
         $('.all-twitts').prepend('<div class="tweet"><div class="user ' +
-          tweet.user + '">@' + tweet.user +
-          ':</div><div class="message">' + tweet.message +
+          tweet.user + '">@' + tweet.user +':</div>' +
+          '<div class="message">' + tweet.message +
           '</div><div class="date">' + moment(tweet.created_at).fromNow() +
            "</div></div><hr>");
         });
@@ -52,6 +54,11 @@ $(document).ready(function(){
 
 /************ Display specific user tweets  ***********/
     else{
+      console.log("Parsing for SPECIFIC-USER Tweets");
+      $('.all-twitts-container').fadeOut(function() {
+        $('.user-twitts-container').fadeIn();
+      });
+
      //**** GO BACK TO HOME PAGE - Upon 'View All' Button-Click ****/
       $('.btn-primary').on('click', function() {
 
@@ -61,10 +68,6 @@ $(document).ready(function(){
         $('.all-twitts-container').fadeIn();
         tweetHandle = '';
       });
-
-      $('.all-twitts-container').fadeOut(function() {
-          $('.user-twitts-container').fadeIn();
-        });
 
       $('.user-twitts').html('');
 
