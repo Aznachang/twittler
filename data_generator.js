@@ -57,8 +57,8 @@ var generateRandomTweet = function(){
   addTweet(tweet);
 };
 
-/** Generates 5 Random Tweets Upon Loading Home Page **/
-for(var i = 0; i < 5; i++){
+/** Generates 7 Random Tweets Upon Loading Home Page **/
+for(var i = 0; i < 6; i++){
   generateRandomTweet();
 }
 
