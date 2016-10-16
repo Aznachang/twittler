@@ -4,35 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Twittler</title>
-    <script src="jquery.js"></script>
-    <script src="data_generator.js"></script>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel= "stylesheet" type="text/css" href ="twittler.css">
-    <script src="moment.js"></script>
   </head>
-   <body>
-<!-- Display Tweets -->
-
+  <body>
     <div class="container">
+      <!-- Twittler Logo Title -->
       <div class="logo">Twittler</div>
       <hr>
-    </div>
-
-    <div class="container">
-      <div class="all-twitts-container">
-        <div class="all-twitts"></div>
       </div>
-
+      <!-- Parent Container: All-Twitts & User-Twitts -->
+      <div class="container">
+        <div class="all-twitts-container">
+          <!-- All-Twiit Posts Here -->
+          <div class="all-twitts"></div>
+      </div>
+      <!-- User-Twiit Posts Here -->
       <div class="user-twitts-container">
-      <h2 class="user-twitts-heading"></h2>
-        <div class="back-to-all"><button class="btn btn-primary" type="submit">View All</button>
+        <h2 class="user-twitts-heading"></h2>
+        <!-- Hidden on HOME PAGE, Used to Go-Back to Home Page -->
+        <div class="back-to-all">
+          <button class="btn btn-primary" type="submit">View All</button>
         </div>
           <div class="user-twitts"></div>
+        </div>
       </div>
-    </div>
-
-  <script src="tweet.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/data_generator.js"></script>
+    <script src="js/tweet.js"></script>
   </body>
-
 </html>
