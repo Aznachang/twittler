@@ -35,6 +35,7 @@ var addTweet = function(newTweet){
     streams.visitors[username].push(newTweet);
   }
   streams.home.push(newTweet);
+  console.log(streams.home);
 };
 
 // utility function

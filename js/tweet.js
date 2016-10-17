@@ -31,7 +31,8 @@ $(document).ready(function(){
         $('.all-twitts').prepend('<div class="tweet"><div class="user ' +
           tweet.user + '">@' + tweet.user +':</div>' +
           '<div class="message">' + tweet.message +
-          '</div><div class="date">' + moment(tweet.created_at).fromNow() +
+          '</div><div class="date">' + moment(tweet.created_at).format('MMMM Do YYYY, h:mm') +
+          '</div>' + '<div class="date-ago">' + moment(tweet.created_at).fromNow() +
            "</div></div><hr>");
       });
 
@@ -79,15 +80,17 @@ $(document).ready(function(){
   // ALL user tweets - each row
       if(tweetHandle !== visitor){
         streams.users[tweetHandle].forEach(function(tweet) {
-            $('.user-twitts').prepend('<div class="tweet"><div class="message">' + tweet.message +
-              '</div><div class="date">' + moment(tweet.created_at).fromNow() +
-              "</div></div><hr>");
+          $('.user-twitts').prepend('<div class="tweet"><div class="message">' + tweet.message +
+            '</div><div class="date">' + moment(tweet.created_at).format('MMMM Do YYYY, h:mm') +
+            '</div>' + '<div class="date-ago">' + moment(tweet.created_at).fromNow() +
+             "</div></div><hr>");
         });
       }else{
         streams.visitors[tweetHandle].forEach(function(tweet) {
           $('.user-twitts').prepend('<div class="tweet"><div class="message">' + tweet.message +
-            '</div><div class="date">' + moment(tweet.created_at).fromNow() +
-            "</div></div><hr>");
+            '</div><div class="date">' + moment(tweet.created_at).format('MMMM Do YYYY, h:mm') +
+            '</div>' + '<div class="date-ago">' + moment(tweet.created_at).fromNow() +
+             "</div></div><hr>");
           });
       }
     } //end of else
