@@ -1,10 +1,13 @@
+//As per data_generator notes(75) - set a global variable to submit own twitts!
+var visitor = 'Aznachang';
+
 $(document).ready(function(){
   //initially there is no specific Twittler Handle passed
   var tweetHandle = '';
   var users = Object.keys(streams.users);
 
   var displayTweets = function(tweetHandle) {
-    //Check or Parse for New Tweets every 0.5 seconds
+    /**** Check For New Tweets Every 0.5 secs ****/
     setTimeout(function(){
       displayTweets(tweetHandle);
     }, 500);
@@ -32,15 +35,21 @@ $(document).ready(function(){
            "</div></div><hr>");
       });
 
+      var visitorClass = '.'+ visitor;
+      $(visitorClass).on('click', function(){
+        $('.send-own-container').hide();
+        tweetHandle = visitor;
+      });
+
       //Display tweets by clicking on Specific-UserName
       users.forEach(function(user){
         var userClass = '.' + user;
 
         $(userClass).on('click', function() {
+          $('.send-own-container').hide();
           tweetHandle = user;
         });
       });
-
     } //end of if
 
 /************ Display specific user tweets  ***********/
@@ -56,6 +65,7 @@ $(document).ready(function(){
         $('.user-twitts-container').fadeOut(function() {
           $('.user-twitts-container').hide();
         });
+        $('.send-own-container').fadeIn();
         $('.all-twitts-container').fadeIn();
         tweetHandle = '';
       });
@@ -67,17 +77,38 @@ $(document).ready(function(){
       $('.user-twitts-heading').append('@' + tweetHandle);
 
   // ALL user tweets - each row
-      streams.users[tweetHandle].forEach(function(tweet) {
-        $('.user-twitts').prepend('<div class="tweet"><div class="message">' + tweet.message +
-          '</div><div class="date">' + moment(tweet.created_at).fromNow() +
-          "</div></div><hr>");
-      });
-
+      if(tweetHandle !== visitor){
+        streams.users[tweetHandle].forEach(function(tweet) {
+            $('.user-twitts').prepend('<div class="tweet"><div class="message">' + tweet.message +
+              '</div><div class="date">' + moment(tweet.created_at).fromNow() +
+              "</div></div><hr>");
+        });
+      }else{
+        streams.visitors[tweetHandle].forEach(function(tweet) {
+          $('.user-twitts').prepend('<div class="tweet"><div class="message">' + tweet.message +
+            '</div><div class="date">' + moment(tweet.created_at).fromNow() +
+            "</div></div><hr>");
+          });
+      }
     } //end of else
 
   }; //end of displayTweets()
 
   //'Display and Refresh' ALL TWEETS on HOME PAGE
   displayTweets(tweetHandle);
+
+  /********** Send Your Own Twitts *********/
+  var submitOwnTwitt = function(){
+    //use the 'writeTweet' function in data_generator
+    var ownMessage =  $('.own-message').val();
+    writeTweet(ownMessage);
+    $('.own-message').val();
+    tweetHandle = visitor;
+  };
+
+  $('.submit-own').on('click', function(ev){
+    ev.preventDefault();
+    submitOwnTwitt();
+  });
 
 }); //end of file

@@ -16,18 +16,24 @@ window.streams = {};
 //DISPLAY ALL THE TWEETS
 streams.home = [];  //[{tweet - user, message, date-time}] - Stores array of {tweets}
 streams.users = {}; //Keys are: shawndrost, sharksforcheap, mracus, douglascalhoun
+streams.visitors = {};
 
 /** DISPLAY SPECIFIC USER-TWEETS **/
 streams.users.shawndrost = [];
 streams.users.sharksforcheap = [];
 streams.users.mracus = [];
 streams.users.douglascalhoun = [];
+streams.visitors.Aznachang = [];
 window.users = Object.keys(streams.users);
 
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
   var username = newTweet.user;
-  streams.users[username].push(newTweet); //from generateRandomTweet - {tweet.user}
+  if(username !== 'Aznachang'){
+    streams.users[username].push(newTweet); //from generateRandomTweet - {tweet.user}
+  }else{
+    streams.visitors[username].push(newTweet);
+  }
   streams.home.push(newTweet);
 };
 
@@ -64,7 +70,7 @@ for(var i = 0; i < 6; i++){
 
 var scheduleNextTweet = function(){
   generateRandomTweet();
-  setTimeout(scheduleNextTweet, Math.random() *  2000);
+  setTimeout(scheduleNextTweet, Math.random() * 4000);
 };
 scheduleNextTweet(); //schedules Tweets
 
@@ -77,5 +83,6 @@ var writeTweet = function(message){
   var tweet = {};
   tweet.user = visitor;
   tweet.message = message;
+  tweet.created_at = new Date();
   addTweet(tweet);
 };
